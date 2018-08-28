@@ -20,10 +20,10 @@ public class Cuadrados {
 
     public  Cuadrados (Mylatlng puntoInicial){
         setCentro(puntoInicial);
-        setVsi(new Mylatlng(puntoInicial.getLatitud()+ getDiagonal() , puntoInicial.getLongitud()- getDiagonal() ));
+        setVsi(new Mylatlng(puntoInicial.getLatitud()+ getDiagonal(), puntoInicial.getLongitud()- getDiagonal() ));
         setVsd(new Mylatlng(puntoInicial.getLatitud()+ getDiagonal() , puntoInicial.getLongitud()+ getDiagonal() ));
-        setVii(new Mylatlng(puntoInicial.getLatitud()- getDiagonal() , puntoInicial.getLongitud()- getDiagonal() ));
-        setVid(new Mylatlng(puntoInicial.getLatitud()- getDiagonal() , puntoInicial.getLongitud()+ getDiagonal() ));
+        setVii(new Mylatlng(puntoInicial.getLatitud()- getDiagonal(), puntoInicial.getLongitud()- getDiagonal() ));
+        setVid(new Mylatlng(puntoInicial.getLatitud()- getDiagonal() , puntoInicial.getLongitud()+ getDiagonal()));
 
     }
 

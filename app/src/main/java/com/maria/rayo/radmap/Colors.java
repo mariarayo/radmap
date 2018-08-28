@@ -18,19 +18,26 @@ public class Colors {
 
     }
 
-    public ArrayList<Integer> getColorList () {
-        ArrayList<Integer> colorsList = new ArrayList<Integer>();
+    public Integer getColorCuadrado (double potenciaTotal) {
+        Integer color=0x0000000;
 
+            if ( potenciaTotal >= 1.48 ) {
+                color=(0xfff0000);// verde 0xf00ff00
+            }else{
+                if ( potenciaTotal == 4 && potenciaTotal <=6) {
+                    color=(0xfffff00);//amarillo
+                }else{
+                    if ( potenciaTotal ==7 && potenciaTotal <=9) {
+                        color=(0xfff0000); //rojo
+                    }else{
+                        if ( potenciaTotal >= 10) {
+                            color=(0xfff0000); //rojo
+                        }
+                    }
+                }
+            }
 
-        colorsList.add(0xfffff00);//amarillo
-        colorsList.add(0xf00ff00);// verde
-        colorsList.add(0xfff0000); //rojo
-        colorsList.add(0xfff0000); //rojo
-        colorsList.add(0xff000000); //negro
-
-
-
-      return colorsList;
+      return color;
     }
 }
 

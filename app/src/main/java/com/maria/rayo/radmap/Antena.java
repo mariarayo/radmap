@@ -1,6 +1,7 @@
 package com.maria.rayo.radmap;
 
 
+import com.google.android.gms.maps.model.LatLng;
 
 public class Antena {
     double lon;
@@ -22,6 +23,10 @@ public class Antena {
         rango = currentrango;
     }
 
+    public LatLng posicion (){
+        LatLng LatLng=new LatLng(lat, lon);
+        return LatLng;
+    }
 
 
 

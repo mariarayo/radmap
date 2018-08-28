@@ -12,6 +12,9 @@ import android.support.v4.util.LongSparseArray;
 import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
+import java.util.*;
+import java.lang.*;
+import java.io.*;
 
 import android.R.*;
 
@@ -58,24 +61,17 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     @Override
     public void onMapReady(final GoogleMap googleMap) {
 
-        Log.i("TEST", "HOLA ESTPY AQUI2");
+        Log.i("TEST", "HOLA ESTOY AQUI2");
 
         mMap = googleMap;
 
-
-        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-
-            return;
-        }
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED)
         //genera permisos para la locacion con el if anterior
         mMap.setMyLocationEnabled(true);
 
         LatLng miUbicacion = new LatLng(4.751328, -74.029998);
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(miUbicacion, 15));
 
-        // genera el ZOOM
-
-        //mMap.getUiSettings().setZoomControlsEnabled(true);
         Antut(googleMap);
 
         googleMap.setOnMapClickListener(new GoogleMap.OnMapClickListener() {
@@ -85,21 +81,21 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                     mMap.clear();
 
                 Log.i("CENTRO: ", String.valueOf(mMap.getCameraPosition().target.latitude) + " , " + String.valueOf(mMap.getCameraPosition().target.longitude));
+
                 drawSquares(latLng.latitude, latLng.longitude);
             }
         });
-
-
-
     }
+
+
 
 
     public String KEY_OPENCELLID = "90a214f0f9935d";
 
+
+
+
     public void Antut(GoogleMap googleMap) {
-
-
-        //Se posiciona la camara en las coordenadas de la uniersidad, con un zoom fijo de 20
 
         mMap = googleMap;
 
@@ -116,29 +112,25 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         //calculo del punto inicial
         // posicion del cuadro respecto a mi posicion
 
-        Mylatlng puntoInicio = new Mylatlng(miposicion.getLatitud()+miCuadrado.getDiagonal()*10, miposicion.getLongitud()-miCuadrado.getDiagonal()*2);
+        Mylatlng puntoInicio = new Mylatlng(miposicion.getLatitud()+miCuadrado.getDiagonal()*11, miposicion.getLongitud()-miCuadrado.getDiagonal()*6);
 
         Mylatlng puntoReferencia = puntoInicio;
 
-
-        //dibujo de los cuadrados de acuerdo a el zomm de la pantalla del celular
         //Instanciamos la clase que maneja los colores
         Colors colors = new Colors();
 
-
-        Integer colorPosition =  0;
 
         for(double j = 0; j< 23; j++){
 
             for(double i = 0; i< 14; i++){
                 //Establecer colores con una variable
 
-
                 Cuadrados cuadradoActual = new Cuadrados(puntoReferencia);
+                LatLng puntoReferenviaLatLon= new LatLng(puntoReferencia.getLatitud(),puntoReferencia.getLongitud());
+                double potenciaCuadrado=potenciaTotalP(puntoReferenviaLatLon);
                 Polygon polygon = mMap.addPolygon(cuadradoActual.getPolygonOptions());
                 polygon.setStrokeWidth(0);
-
-                polygon.setFillColor(colors.getColorList().get((int) (Math.random() * (colors.getColorList().size()-1))));
+                polygon.setFillColor(colors.getColorCuadrado(potenciaCuadrado));
 
                 puntoReferencia = new Mylatlng(puntoReferencia.getLatitud(), puntoReferencia.getLongitud()+cuadradoActual.getDiagonal());
             }
@@ -146,30 +138,58 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
         }
 
-
         // Creacion de los marcadores con las coordenadas de las antenas
         ArrayList<Antena> antenasList = getAntenas();
 
-        for (int i = 0; i < antenasList.size(); i++) {
-            double currentLat = antenasList.get(i).lat;
-            double currentLon = antenasList.get(i).lon;
-            LatLng currentPosition = new LatLng(currentLat, currentLon);
+        double potenciaTotal=0;
+        for (int i = 0; i < antenasList.size()-1; i++) {
 
 
-                    mMap.addMarker(new MarkerOptions().position(currentPosition).icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE))
-                    .title(antenasList.get(i).tipo).snippet(Integer.toString(antenasList.get(i).rango)).draggable(true));
+
+        //   mMap.addMarker(new MarkerOptions().position(currentPosition).icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE)).title(antenasList.get(i).tipo).snippet(Integer.toString(antenasList.get(i).rango)).draggable(true));
 
         }
 
-        ColorAntena();
         googleMap.setOnMarkerClickListener(this);
     }
 
+    public double calcularPotencia(LatLng posicion, LatLng locAntena){
+        double potencia=0;
+
+
+        //pasar latitudes y longitudes a metros
+
+        double diferenciaLat= posicion.latitude - locAntena.latitude;
+        double diferenciaLong= posicion.longitude - locAntena.longitude;
+
+        double radioTierra= 6.371;
+        double constante= Math.PI/180;
+
+        double pasarMetros= 2*radioTierra*Math.asin(Math.sqrt((Math.sin(diferenciaLat/2))+((Math.cos(constante*posicion.latitude)*Math.cos(constante*locAntena.latitude))*Math.sin(constante*(diferenciaLong/2)))));
+
+        double distancia= Math.sqrt(pasarMetros);
+        potencia=1/(4*Math.PI*(distancia*distancia));
+
+
+        return potencia;
+    }
+
+
+    public double potenciaTotalP(LatLng posiscion){
+        ArrayList<Antena> antenasList = getAntenas();
+
+        double potenciaTotal=0;
+        for(int i=0; i<antenasList.size(); i++ ){
+
+            potenciaTotal= potenciaTotal+calcularPotencia(posiscion,antenasList.get(i).posicion());
+
+        }
+
+        return potenciaTotal;
+    }
 
     @Override
     public boolean onMarkerClick(Marker marker) {
-
-
         if (marker.equals(markerprueba)){
 
             String latitud, longitud;
@@ -184,8 +204,9 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     }
 
 
-    // Lista de antenas
 
+
+    // Lista de antenas
     public ArrayList<Antena> getAntenas (){
         misAntenas = new ArrayList<Antena>();
 
@@ -198,21 +219,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         currentAntena = new Antena( -74.027939, "GSM", 4.751587, 1164);
         misAntenas.add(currentAntena);
 
-
         return misAntenas;
     }
-
-
-    //Verigfica el posicionamiento de las antenas por color para pintarlas
-    public void ColorAntena() {
-
-        Log.i("TEST", "MARIA!!!!!!!!!!!!!!!!!!!");
-
-        Colors colorAntena = new Colors();
-        colorAntena.getColorList().add(0x000000);// negro
-
-    }
-
 
     public void drawSquares (Double LAT, Double LON){
 
@@ -221,7 +229,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
         Cuadrados miCuadrado = new Cuadrados(miposicion);
 
-        Mylatlng puntoInicio = new Mylatlng(miposicion.getLatitud()+miCuadrado.getDiagonal()*2, miposicion.getLongitud()-miCuadrado.getDiagonal()*2);
+        Mylatlng puntoInicio = new Mylatlng(miposicion.getLatitud()+miCuadrado.getDiagonal()*11.5, miposicion.getLongitud()-miCuadrado.getDiagonal()*7);
         Mylatlng puntoReferencia = puntoInicio;
 
         Log.i("AQUI4", String.valueOf( puntoInicio));
@@ -234,9 +242,11 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             for(double i = 0; i< 14; i++){
                 //Establecer colores con una variable
                 Cuadrados cuadradoActual = new Cuadrados(puntoReferencia);
+                LatLng puntoReferenviaLatLon= new LatLng(puntoReferencia.getLatitud(),puntoReferencia.getLongitud());
+                double potenciaCuadrado=potenciaTotalP(puntoReferenviaLatLon);
                 Polygon polygon = mMap.addPolygon(cuadradoActual.getPolygonOptions());
                 polygon.setStrokeWidth(0);
-                polygon.setFillColor(colors.getColorList().get((int) (Math.random() * (colors.getColorList().size()-1))));
+                polygon.setFillColor(colors.getColorCuadrado(potenciaCuadrado));
 
                 puntoReferencia = new Mylatlng(puntoReferencia.getLatitud(), puntoReferencia.getLongitud()+cuadradoActual.getDiagonal());
             }
