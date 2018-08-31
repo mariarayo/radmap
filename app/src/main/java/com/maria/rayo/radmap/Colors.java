@@ -21,25 +21,24 @@ public class Colors {
     public Integer getColorCuadrado (double potenciaTotal) {
         Integer color=0x0000000;
 
-            if ( potenciaTotal >= 1.48 ) {
-                color=(0xfff0000);// verde 0xf00ff00
+        if ( potenciaTotal >= 0.001 && potenciaTotal <=0.37 ) {
+            color=(0xfff0000);// verde 0xf00ff00
+        }else{
+            if ( potenciaTotal == 0.38 && potenciaTotal <=0.74) {
+                color=(0xfffff00);//amarillo
             }else{
-                if ( potenciaTotal == 4 && potenciaTotal <=6) {
-                    color=(0xfffff00);//amarillo
+                if ( potenciaTotal ==0.75 && potenciaTotal <=1.11) {
+                    color=(0xfff0000); //rojo
                 }else{
-                    if ( potenciaTotal ==7 && potenciaTotal <=9) {
+                    if ( potenciaTotal <1.48) {
                         color=(0xfff0000); //rojo
-                    }else{
-                        if ( potenciaTotal >= 10) {
-                            color=(0xfff0000); //rojo
-                        }
                     }
                 }
             }
+        }
 
-      return color;
+        return color;
     }
 }
-
 
 

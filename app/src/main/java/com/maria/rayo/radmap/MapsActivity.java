@@ -162,10 +162,10 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         double diferenciaLat= posicion.latitude - locAntena.latitude;
         double diferenciaLong= posicion.longitude - locAntena.longitude;
 
-        double radioTierra= 6.371;
+        double radioTierra= 6371000;
         double constante= Math.PI/180;
 
-        double pasarMetros= 2*radioTierra*Math.asin(Math.sqrt((Math.sin(diferenciaLat/2))+((Math.cos(constante*posicion.latitude)*Math.cos(constante*locAntena.latitude))*Math.sin(constante*(diferenciaLong/2)))));
+        double pasarMetros= 2*radioTierra*Math.asin(Math.sqrt(Math.pow((Math.sin(diferenciaLat/2)),2)+((Math.cos(constante*posicion.latitude)*Math.cos(constante*locAntena.latitude))*Math.pow(Math.sin(constante*(diferenciaLong/2)),2))));
 
         double distancia= Math.sqrt(pasarMetros);
         potencia=1/(4*Math.PI*(distancia*distancia));
