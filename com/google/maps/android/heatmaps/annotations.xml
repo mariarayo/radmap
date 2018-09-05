@@ -1,0 +1,5 @@
+<root>
+    <item name='com.google.maps.android.heatmaps.Gradient int[] generateColorMap(double)'>
+        <annotation name='android.support.annotation.Nullable' />
+    </item>
+</root>
