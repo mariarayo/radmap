@@ -2,28 +2,19 @@ package com.maria.rayo.radmap;
 
 import android.Manifest;
 import android.content.pm.PackageManager;
-import android.graphics.Bitmap;
-import android.graphics.Color;
-import android.os.SystemClock;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
-import android.support.v4.util.LongSparseArray;
 import android.util.Log;
-import android.view.View;
 import android.widget.Toast;
-import java.util.*;
 import java.lang.*;
-import java.io.*;
-
 import android.R.*;
+
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
-import com.google.android.gms.maps.model.BitmapDescriptorFactory;
-import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
@@ -61,7 +52,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     @Override
     public void onMapReady(final GoogleMap googleMap) {
 
-        Log.i("TEST", "HOLA ESTOY AQUI2");
 
         mMap = googleMap;
 
@@ -132,6 +122,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 polygon.setStrokeWidth(0);
                 polygon.setFillColor(colors.getColorCuadrado(potenciaCuadrado));
 
+                Log.i("potencia: ", String.valueOf(potenciaCuadrado));
+
                 puntoReferencia = new Mylatlng(puntoReferencia.getLatitud(), puntoReferencia.getLongitud()+cuadradoActual.getDiagonal());
             }
             puntoReferencia = new Mylatlng(puntoReferencia.getLatitud()-(miCuadrado.getDiagonal()), puntoInicio.getLongitud());
@@ -141,34 +133,38 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         // Creacion de los marcadores con las coordenadas de las antenas
         ArrayList<Antena> antenasList = getAntenas();
 
-        double potenciaTotal=0;
-        for (int i = 0; i < antenasList.size()-1; i++) {
-
-
-
-        //   mMap.addMarker(new MarkerOptions().position(currentPosition).icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE)).title(antenasList.get(i).tipo).snippet(Integer.toString(antenasList.get(i).rango)).draggable(true));
-
-        }
-
+        pintarAntenas(getAntenas());
         googleMap.setOnMarkerClickListener(this);
     }
 
-    public double calcularPotencia(LatLng posicion, LatLng locAntena){
-        double potencia=0;
+    public double calcularPotencia(LatLng posicion, LatLng locAntena) {
+        double potencia = 0;
+        int factor = new Integer(1000000);
+
+
 
 
         //pasar latitudes y longitudes a metros
 
-        double diferenciaLat= posicion.latitude - locAntena.latitude;
-        double diferenciaLong= posicion.longitude - locAntena.longitude;
+        double diferenciaLat = Math.abs(posicion.latitude - locAntena.latitude) ;
+        double diferenciaLong =  Math.abs(posicion.longitude - locAntena.longitude);
+        //Log.i(String.valueOf(diferenciaLat),String.valueOf(diferenciaLong));
 
-        double radioTierra= 6371000;
-        double constante= Math.PI/180;
+        double sinLat=Math.sin(diferenciaLat/2);
+        double sinLong=Math.sin(diferenciaLong/2);
 
-        double pasarMetros= 2*radioTierra*Math.asin(Math.sqrt(Math.pow((Math.sin(diferenciaLat/2)),2)+((Math.cos(constante*posicion.latitude)*Math.cos(constante*locAntena.latitude))*Math.pow(Math.sin(constante*(diferenciaLong/2)),2))));
+        double radioTierra= 6371;
 
-        double distancia= Math.sqrt(pasarMetros);
-        potencia=1/(4*Math.PI*(distancia*distancia));
+        //double Haversine=(sinLat*sinLat)+ (Math.cos(posicion.latitude)*Math.cos(posicion.latitude))*(sinLong*sinLong);
+        //double constante= 2*Math.asin(Math.min(1.0, Math.sqrt(Haversine)));
+
+        //double distanciaMetros=radioTierra*constante;
+        //Log.i("Distancia M",String.valueOf(distanciaMetros));
+
+        double distancia=Math.sqrt((diferenciaLat*diferenciaLat)+(diferenciaLong*diferenciaLong))*1000;
+        Log.i("Distancia ",String.valueOf(distancia));
+
+        potencia=(1/(4*Math.PI*(distancia*distancia)))*factor;
 
 
         return potencia;
@@ -219,7 +215,19 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         currentAntena = new Antena( -74.027939, "GSM", 4.751587, 1164);
         misAntenas.add(currentAntena);
 
+
         return misAntenas;
+    }
+
+    public void pintarAntenas (ArrayList<Antena> antenas){
+
+        for(int i=0; i<antenas.size(); i++ ){
+            double miLat=antenas.get(i).lat;
+            double milong=antenas.get(i).lon;
+            mMap.addMarker(new MarkerOptions().position(new LatLng(miLat, milong)).title("antena"));
+
+
+        }
     }
 
     public void drawSquares (Double LAT, Double LON){
