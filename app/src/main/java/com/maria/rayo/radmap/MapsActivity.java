@@ -15,6 +15,8 @@ import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptor;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
@@ -102,7 +104,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         //calculo del punto inicial
         // posicion del cuadro respecto a mi posicion
 
-        Mylatlng puntoInicio = new Mylatlng(miposicion.getLatitud()+miCuadrado.getDiagonal()*11, miposicion.getLongitud()-miCuadrado.getDiagonal()*6);
+        Mylatlng puntoInicio = new Mylatlng(miposicion.getLatitud()+miCuadrado.getDiagonal()*11, miposicion.getLongitud()-miCuadrado.getDiagonal()*15);
 
         Mylatlng puntoReferencia = puntoInicio;
 
@@ -110,9 +112,9 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         Colors colors = new Colors();
 
 
-        for(double j = 0; j< 23; j++){
+        for(double j = 0; j< 25; j++){
 
-            for(double i = 0; i< 14; i++){
+            for(double i = 0; i< 25; i++){
                 //Establecer colores con una variable
 
                 Cuadrados cuadradoActual = new Cuadrados(puntoReferencia);
@@ -122,7 +124,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 polygon.setStrokeWidth(0);
                 polygon.setFillColor(colors.getColorCuadrado(potenciaCuadrado));
 
-                Log.i("potencia: ", String.valueOf(potenciaCuadrado));
+               // Log.i("potencia: ", String.valueOf(potenciaCuadrado));
 
                 puntoReferencia = new Mylatlng(puntoReferencia.getLatitud(), puntoReferencia.getLongitud()+cuadradoActual.getDiagonal());
             }
@@ -139,7 +141,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
     public double calcularPotencia(LatLng posicion, LatLng locAntena) {
         double potencia = 0;
-        int factor = new Integer(1000000);
+        int factor = new Integer(1000);
 
 
 
@@ -162,7 +164,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         //Log.i("Distancia M",String.valueOf(distanciaMetros));
 
         double distancia=Math.sqrt((diferenciaLat*diferenciaLat)+(diferenciaLong*diferenciaLong))*1000;
-        Log.i("Distancia ",String.valueOf(distancia));
+        //Log.i("Distancia ",String.valueOf(distancia));
 
         potencia=(1/(4*Math.PI*(distancia*distancia)))*factor;
 
@@ -224,7 +226,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         for(int i=0; i<antenas.size(); i++ ){
             double miLat=antenas.get(i).lat;
             double milong=antenas.get(i).lon;
-            mMap.addMarker(new MarkerOptions().position(new LatLng(miLat, milong)).title("antena"));
+            mMap.addMarker(new MarkerOptions().position(new LatLng(miLat, milong)).title("antena").icon(BitmapDescriptorFactory.fromResource(R.drawable.antena)));
 
 
         }
@@ -262,107 +264,4 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
         }
     }
-
-
-
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
