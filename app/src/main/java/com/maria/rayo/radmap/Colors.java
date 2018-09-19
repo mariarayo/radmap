@@ -45,19 +45,19 @@ public class Colors {
                             Opcion = "5";
                         }else{
                             if ( potenciaTotal <8.8) {
-                                color=(0xfdfff05);
+                                color=(0xfffee04);
                                 Opcion = "6";
                             }else{
                                 if ( potenciaTotal <11.42) {
-                                    color=(0xfffee04);
+                                    color=(0xfffbf03);
                                     Opcion = "7";
                                 }else{
                                     if ( potenciaTotal <17.38) {
-                                        color=(0xfffbf03);
+                                        color=(0xfff8f02);
                                         Opcion = "8";
                                     }else{
                                         if ( potenciaTotal <32.78) {
-                                            color=(0xfff8f02);
+                                            color=(0xfff5e01);
                                             Opcion = "9";
                                         }else{
                                             if ( potenciaTotal >=32.78) {

@@ -104,7 +104,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         //calculo del punto inicial
         // posicion del cuadro respecto a mi posicion
 
-        Mylatlng puntoInicio = new Mylatlng(miposicion.getLatitud()+miCuadrado.getDiagonal()*11, miposicion.getLongitud()-miCuadrado.getDiagonal()*15);
+        Mylatlng puntoInicio = new Mylatlng(miposicion.getLatitud()+miCuadrado.getDiagonal()*11, miposicion.getLongitud()-miCuadrado.getDiagonal()*6);
 
         Mylatlng puntoReferencia = puntoInicio;
 
@@ -112,9 +112,9 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         Colors colors = new Colors();
 
 
-        for(double j = 0; j< 25; j++){
+        for(double j = 0; j< 23; j++){
 
-            for(double i = 0; i< 25; i++){
+            for(double i = 0; i< 14; i++){
                 //Establecer colores con una variable
 
                 Cuadrados cuadradoActual = new Cuadrados(puntoReferencia);
