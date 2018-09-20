@@ -1,16 +1,20 @@
 package com.maria.rayo.radmap;
 
 import android.Manifest;
+import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.net.Uri;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.Toast;
 import java.lang.*;
 import android.R.*;
 
 
+import com.github.clans.fab.FloatingActionButton;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -35,6 +39,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     private Marker markerprueba;
     public ArrayList<Antena> misAntenas;
     public Antena currentAntena;
+    private FloatingActionButton quienButton;
+    private FloatingActionButton usoButton;
 
 
     @Override
@@ -46,7 +52,33 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
 
-        Log.i("TEST", "HOLA ESTOY AQUI");
+
+        quienButton = (FloatingActionButton) findViewById(R.id.quien);
+        usoButton = (FloatingActionButton) findViewById(R.id.instrucciones);
+
+
+
+        quienButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent myIntent = new Intent(getApplicationContext(), Quienes.class);
+                startActivity(myIntent);
+
+            }
+        });
+
+        usoButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent myIntent = new Intent(getApplicationContext(), Uso.class);
+                startActivity(myIntent);
+
+            }
+        });
+
+
+
+
     }
 
 

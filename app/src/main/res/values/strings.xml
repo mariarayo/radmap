@@ -1,4 +1,7 @@
 <resources>
-    <string name="app_name">radmap</string>
+    <string name="app_name">RadMap</string>
     <string name="title_activity_maps">Map</string>
+    <string name="texto1_QuienesSomos">La universidad San Buenaventura Bogotá, emprende un proyecto sobre  las consecuencias que traen las antenas electromagnéticas para la salud del ser vivo, para lo cual ha diseñado un primer prototipo de mapa de radiación electromagnético para un sector geográfico de Bogotá.</string>
+    <string name="texto2_QuienesSomos">Aplicación elaborada por estudiantes de ingeniería de sistemas como proyecto de grado.</string>
+    <string name="texto3_QuienesSomos"></string>
 </resources>
