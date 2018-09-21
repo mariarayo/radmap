@@ -78,15 +78,17 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
 
 
-
     }
+
+
 
     @Override
     public void onMapReady(final GoogleMap googleMap) {
 
 
         mMap = googleMap;
-
+        //mMap.getUiSettings().setZoomGesturesEnabled(false);
+        //mMap.getUiSettings().setZoomControlsEnabled(false);
 
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED)
         //genera permisos para la locacion con el if anterior
@@ -97,7 +99,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
         Antut(googleMap);
 
-        googleMap.setOnMapClickListener(new GoogleMap.OnMapClickListener() {
+        mMap.setOnMapClickListener(new GoogleMap.OnMapClickListener() {
+
             @Override
             public void onMapClick(LatLng latLng) {
                 if(mMap != null)
@@ -105,10 +108,14 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
                 Log.i("CENTRO: ", String.valueOf(mMap.getCameraPosition().target.latitude) + " , " + String.valueOf(mMap.getCameraPosition().target.longitude));
                 Toast.makeText(getApplicationContext(), "Calculando Potencias", Toast.LENGTH_SHORT).show();
+
                 drawSquares(latLng.latitude, latLng.longitude);
                 pintarAntenas(getAntenas());
 
             }
+
+
+
         });
     }
 
@@ -131,7 +138,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         //calculo del punto inicial
         // posicion del cuadro respecto a mi posicion
 
-        Mylatlng puntoInicio = new Mylatlng(miposicion.getLatitud()+miCuadrado.getDiagonal()*38, miposicion.getLongitud()-miCuadrado.getDiagonal()*22);
+        Mylatlng puntoInicio = new Mylatlng(miposicion.getLatitud()+miCuadrado.getDiagonal()*11, miposicion.getLongitud()-miCuadrado.getDiagonal()*6);
 
         Mylatlng puntoReferencia = puntoInicio;
 
@@ -139,9 +146,9 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         Colors colors = new Colors();
 
 
-        for(double j = 0; j< 40; j++){
+        for(double j = 0; j<23; j++){
 
-            for(double i = 0; i< 23; i++){
+            for(double i = 0; i< 14; i++){
                 //Establecer colores con una variable
 
                 Cuadrados cuadradoActual = new Cuadrados(puntoReferencia);
@@ -153,9 +160,9 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
                // Log.i("potencia: ", String.valueOf(potenciaCuadrado));
 
-                puntoReferencia = new Mylatlng(puntoReferencia.getLatitud(), puntoReferencia.getLongitud()+(cuadradoActual.getDiagonal())*2);
+                puntoReferencia = new Mylatlng(puntoReferencia.getLatitud(), puntoReferencia.getLongitud()+(cuadradoActual.getDiagonal()));
             }
-            puntoReferencia = new Mylatlng(puntoReferencia.getLatitud()-((miCuadrado.getDiagonal()*2)), puntoInicio.getLongitud());
+            puntoReferencia = new Mylatlng(puntoReferencia.getLatitud()-((miCuadrado.getDiagonal())), puntoInicio.getLongitud());
 
         }
 
@@ -240,7 +247,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         for(int i=0; i<antenas.size(); i++ ){
             double miLat=antenas.get(i).lat;
             double milong=antenas.get(i).lon;
-            mMap.addMarker(new MarkerOptions().position(new LatLng(miLat, milong)).icon(BitmapDescriptorFactory.fromResource(R.drawable.markerantena)));
+            mMap.addMarker(new MarkerOptions().position(new LatLng(miLat, milong)).icon(BitmapDescriptorFactory.fromResource(R.drawable.markerantena2)));
 
         }
     }
@@ -252,7 +259,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
         Cuadrados miCuadrado = new Cuadrados(miposicion);
 
-        Mylatlng puntoInicio = new Mylatlng(miposicion.getLatitud()+miCuadrado.getDiagonal()*22, miposicion.getLongitud()-miCuadrado.getDiagonal()*12);
+        Mylatlng puntoInicio = new Mylatlng(miposicion.getLatitud()+miCuadrado.getDiagonal()*11, miposicion.getLongitud()-miCuadrado.getDiagonal()*6);
         Mylatlng puntoReferencia = puntoInicio;
 
         Log.i("AQUI4", String.valueOf( puntoInicio));
@@ -261,8 +268,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         Integer colorPosition =  0;
 
         //Pintar cuadrados
-        for(double j = 0; j< 50; j++){
-            for(double i = 0; i< 50; i++){
+        for(double j = 0; j< 23; j++){
+            for(double i = 0; i< 14; i++){
                 //Establecer colores con una variable
                 Cuadrados cuadradoActual = new Cuadrados(puntoReferencia);
                 LatLng puntoReferenviaLatLon= new LatLng(puntoReferencia.getLatitud(),puntoReferencia.getLongitud());
@@ -271,9 +278,9 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 polygon.setStrokeWidth(0);
                 polygon.setFillColor(colors.getColorCuadrado(potenciaCuadrado));
 
-                puntoReferencia = new Mylatlng(puntoReferencia.getLatitud(), puntoReferencia.getLongitud()+cuadradoActual.getDiagonal()*2);
+                puntoReferencia = new Mylatlng(puntoReferencia.getLatitud(), puntoReferencia.getLongitud()+cuadradoActual.getDiagonal());
             }
-            puntoReferencia = new Mylatlng(puntoReferencia.getLatitud()-(miCuadrado.getDiagonal()*2), puntoInicio.getLongitud());
+            puntoReferencia = new Mylatlng(puntoReferencia.getLatitud()-(miCuadrado.getDiagonal()), puntoInicio.getLongitud());
 
         }
     }

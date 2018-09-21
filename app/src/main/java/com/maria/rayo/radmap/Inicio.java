@@ -11,7 +11,7 @@ import android.R.*;
 import android.view.WindowManager;
 
 public class Inicio extends Activity {
-    private final int DURACION_SPLASH = 2000;
+    private final int DURACION_SPLASH = 1000;
 
 
     @Override

@@ -10,7 +10,7 @@ import com.google.android.gms.maps.model.PolygonOptions;
 
 public class Cuadrados {
 
-    private final double diagonal = 0.0003;
+    private final double diagonal = 0.001;
     private Mylatlng centro;
     private Mylatlng Vsi;
     private Mylatlng Vsd;
