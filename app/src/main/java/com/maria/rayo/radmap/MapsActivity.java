@@ -87,6 +87,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
         mMap = googleMap;
 
+
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED)
         //genera permisos para la locacion con el if anterior
         mMap.setMyLocationEnabled(true);
@@ -130,7 +131,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         //calculo del punto inicial
         // posicion del cuadro respecto a mi posicion
 
-        Mylatlng puntoInicio = new Mylatlng(miposicion.getLatitud()+miCuadrado.getDiagonal()*22, miposicion.getLongitud()-miCuadrado.getDiagonal()*12);
+        Mylatlng puntoInicio = new Mylatlng(miposicion.getLatitud()+miCuadrado.getDiagonal()*38, miposicion.getLongitud()-miCuadrado.getDiagonal()*22);
 
         Mylatlng puntoReferencia = puntoInicio;
 
@@ -138,9 +139,9 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         Colors colors = new Colors();
 
 
-        for(double j = 0; j< 30; j++){
+        for(double j = 0; j< 40; j++){
 
-            for(double i = 0; i< 30; i++){
+            for(double i = 0; i< 23; i++){
                 //Establecer colores con una variable
 
                 Cuadrados cuadradoActual = new Cuadrados(puntoReferencia);
@@ -239,7 +240,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         for(int i=0; i<antenas.size(); i++ ){
             double miLat=antenas.get(i).lat;
             double milong=antenas.get(i).lon;
-            mMap.addMarker(new MarkerOptions().position(new LatLng(miLat, milong)).icon(BitmapDescriptorFactory.fromResource(R.mipmap.antena1)));
+            mMap.addMarker(new MarkerOptions().position(new LatLng(miLat, milong)).icon(BitmapDescriptorFactory.fromResource(R.drawable.markerantena)));
 
         }
     }
