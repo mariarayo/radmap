@@ -10,7 +10,7 @@ import com.google.android.gms.maps.model.PolygonOptions;
 
 public class Cuadrados {
 
-    private final double diagonal = 0.001;
+    private final double diagonal = 0.0003;
     private Mylatlng centro;
     private Mylatlng Vsi;
     private Mylatlng Vsd;
@@ -28,8 +28,7 @@ public class Cuadrados {
     }
 
     //dibuja el poligono mediante las coordenadas
-
-    public PolygonOptions getPolygonOptions(){
+   public PolygonOptions getPolygonOptions(){
 
         PolygonOptions rectOptions = new PolygonOptions()
                 .add(new LatLng (getVsi().getLatitud(), getVsi().getLongitud()),
@@ -43,8 +42,6 @@ public class Cuadrados {
     }
 
    // constructor
-
-
     public double getDiagonal() {
         return diagonal;
     }

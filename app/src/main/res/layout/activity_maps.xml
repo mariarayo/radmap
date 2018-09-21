@@ -1,10 +1,9 @@
-
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:fab="http://schemas.android.com/apk/res-auto"
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_height="match_parent"
+    android:layout_width="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
-    android:layout_height="match_parent"
-    android:layout_width="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
     >
 
     <LinearLayout
@@ -65,6 +64,7 @@
                     android:layout_height="20dp"
                     android:background="@color/colorYellow"
 
+
                     ></LinearLayout>
 
                 <TextView
@@ -117,9 +117,8 @@
             android:layout_alignParentBottom="@+id/convenciones"
             tools:context="com.maria.rayo.radmap.MapsActivity" />
 
+    </LinearLayout>
 
-
-        </LinearLayout>
 
 
     <com.github.clans.fab.FloatingActionMenu
@@ -131,13 +130,14 @@
         android:layout_gravity="bottom|center"
         android:layout_marginBottom="?android:attr/actionBarSize"
         app:menu_backgroundColor="@android:color/transparent"
-        app:menu_colorNormal="#078785"
-        app:menu_colorPressed="#078785"
-        app:menu_colorRipple="#078785"
-        app:menu_fab_label=""
+        app:menu_colorNormal="#20c2c1"
+        app:menu_colorPressed="#05f1ee"
+        app:menu_colorRipple="#05f1ee"
+        app:menu_fab_label="Menu"
+        app:menu_labels_position="left"
         app:menu_labels_colorNormal="@android:color/white"
-        app:menu_labels_colorPressed="@color/colorAccent"
-        app:menu_labels_colorRipple="@color/colorAccent"
+        app:menu_labels_colorPressed="#05f1ee"
+        app:menu_labels_colorRipple="#05f1ee"
         app:menu_labels_textColor="#212121"
         app:menu_openDirection="up"
         app:menu_shadowColor="#078785"
@@ -148,9 +148,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/info"
-            app:fab_colorNormal="#078785"
-            app:fab_colorPressed="#078785"
-            app:menu_fab_label="Quines Somos"
+            app:fab_colorNormal="#05f1ee"
+            app:fab_colorPressed="#05f1ee"
+            app:fab_label="¿Quienes Somos?"
             app:fab_shadowColor="#078785"
             app:fab_size="mini" />
 
@@ -159,13 +159,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/uso"
-            app:fab_colorNormal="#078785"
-            app:fab_colorPressed="#078785"
+            app:fab_colorNormal="#05f1ee"
+            app:fab_colorPressed="#05f1ee"
+            app:fab_label="Instrucciones"
             app:fab_shadowColor="#078785"
-            app:menu_fab_label="Instrucciones"
             app:fab_size="mini" />
 
 
     </com.github.clans.fab.FloatingActionMenu>
+
 
 </RelativeLayout>
