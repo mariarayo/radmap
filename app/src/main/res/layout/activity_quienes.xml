@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="#078785"
+    android:background="#d48307"
     tools:context=".Quienes">
 
     <ScrollView
@@ -26,19 +26,19 @@
 
             <ImageView
                 android:layout_width="match_parent"
-                android:layout_height="100dp"
-                android:src="@drawable/universidad"
+                android:layout_height="180dp"
+                android:src="@drawable/logo_universidad"
 
                 />
 
 
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="340dp"
+                android:layout_height="40dp"
                 android:gravity="center"
-                android:text="¿Quienes Somos?"
+                android:text="Acerca de RadMap"
                 android:textStyle="bold"
-                android:textColor="#ffffff"
+                android:textColor="#d48307"
                 android:textSize="28dp"
                 android:layout_centerHorizontal="true"
 
@@ -48,10 +48,12 @@
                 android:id="@+id/text1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="10dp"
                 android:text="@string/texto1_QuienesSomos"
-                android:textColor="#ffffff"
+                android:textColor="#000000"
+                android:textSize="22dp"
+                android:layout_marginTop="10dp"
+                android:layout_centerHorizontal="true"
+
                 />
 
             <TextView
@@ -59,7 +61,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/texto2_QuienesSomos"
-                android:textColor="#ffffff"
+                android:textColor="#000000"
+                android:textSize="22dp"
                 android:layout_marginTop="10dp"
                 android:layout_centerHorizontal="true"
 
@@ -69,9 +72,10 @@
                 android:id="@+id/text3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Representantes"
-                android:textColor="#ffffff"
+                android:text="Autores"
+                android:textColor="#d48307"
                 android:textSize="18dp"
+                android:textStyle="bold"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="10dp"
                 />
@@ -80,36 +84,46 @@
                 android:id="@+id/text4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Estudiante: Angélica María Becerra Rayo."
-                android:textColor="#ffffff"
-                android:textStyle="bold"
+                android:text="Angélica María Becerra Rayo."
+                android:textColor="#000000"
                 android:textSize="18dp"
+                android:textStyle="bold"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="2dp"
                 />
 
             <TextView
                 android:id="@+id/text5"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Tutor: Osberth De Castro."
-                android:textStyle="bold"
-                android:textColor="#ffffff"
+                android:text="Osberth De Castro."
+                android:textColor="#000000"
                 android:textSize="18dp"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="2dp"
                 />
+            <TextView
+                android:id="@+id/text6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Yamil Buenaño Palacios"
+                android:textColor="#000000"
+                android:textSize="18dp"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="2dp"
+                />
+            <TextView
+                android:id="@+id/text7"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Mauricio A. Polochè Arango."
+                android:textColor="#000000"
+                android:textSize="18dp"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="2dp"
+                />
+
         </LinearLayout>
-
-
-
-
     </ScrollView>
-
-
-
-
-
-
 
 </android.support.constraint.ConstraintLayout>

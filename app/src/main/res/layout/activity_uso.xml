@@ -5,38 +5,195 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="#078785"
+    android:background="#ffffff"
     tools:context=".Uso">
 
-    <LinearLayout
-        android:id="@+id/linearLayout3"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:padding="20dp"
-        android:layout_marginTop="0dp"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
+        android:layout_height="match_parent">
+
+            <LinearLayout
+                android:id="@+id/linearLayout3"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="20dp"
+                android:layout_marginTop="0dp"
+                android:orientation="vertical"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent">
 
 
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:src="@drawable/universidad"
 
-        />
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:text="Instrucciones"
-        android:textStyle="bold"
-        android:textColor="#ffffff"
-        android:textSize="28dp"
-        android:layout_centerHorizontal="true"
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="180dp"
+                android:src="@drawable/logo_universidad"
 
-        />
-    </LinearLayout>
+                />
+            <TextView
+                android:id="@+id/text1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Instrucciones"
+                android:textStyle="bold"
+                android:textColor="#d48307"
+                android:textSize="28dp"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="10dp"
+
+                />
+
+                <TextView
+                    android:id="@+id/text2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/texto1_instrucciones"
+                    android:textColor="#000000"
+                    android:textSize="22dp"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="10dp"
+
+                    />
+                <TextView
+                    android:id="@+id/text3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/texto2_instrucciones"
+                    android:textColor="#000000"
+                    android:textSize="22dp"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="10dp"
+
+                    />
+                <TextView
+                    android:id="@+id/text4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/texto3_instrucciones"
+                    android:textColor="#000000"
+                    android:textSize="22dp"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="10dp"
+
+                    />
+                <TextView
+                    android:id="@+id/text5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/texto4_instrucciones"
+                    android:textColor="#d48307"
+                    android:textSize="22dp"
+                    android:textStyle="bold"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="10dp"
+
+                    />
+
+                <TextView
+                    android:id="@+id/text13"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/texto8_instrucciones"
+                    android:textColor="#000000"
+                    android:textSize="22dp"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="10dp"
+
+                    />
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="350dp"
+                    android:src="@drawable/leyenda"
+                    android:layout_marginTop="20dp"
+
+                    />
+
+
+                <TextView
+                    android:id="@+id/text7"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/texto6_instrucciones"
+                    android:textColor="#d48307"
+                    android:textSize="22dp"
+                    android:textStyle="bold"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="13dp"
+
+                    />
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:src="@drawable/formula"
+                    android:layout_marginTop="20dp"
+
+                    />
+                <TextView
+                    android:id="@+id/text8"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/texto7_instrucciones"
+                    android:textColor="#000000"
+                    android:textSize="22dp"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="10dp"
+
+                    />
+
+                <TextView
+                    android:id="@+id/text9"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/texto9_instrucciones"
+                    android:textColor="#000000"
+                    android:textSize="22dp"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="10dp"
+
+                    />
+                <TextView
+                    android:id="@+id/text10"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/texto10_instrucciones"
+                    android:textColor="#000000"
+                    android:textSize="22dp"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="10dp"
+
+                    />
+                <TextView
+                    android:id="@+id/text11"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/texto11_instrucciones"
+                    android:textColor="#000000"
+                    android:textSize="22dp"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="10dp"
+
+                    />
+                <TextView
+                    android:id="@+id/text12"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/texto12_instrucciones"
+                    android:textColor="#000000"
+                    android:textSize="22dp"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="10dp"
+
+                    />
+
+
+
+
+
+
+            </LinearLayout>
+    </ScrollView>
+
 
 </android.support.constraint.ConstraintLayout>

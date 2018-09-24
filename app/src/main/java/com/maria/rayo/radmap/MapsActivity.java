@@ -27,6 +27,8 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.maps.model.Polygon;
 
 
+import java.math.RoundingMode;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 
@@ -106,8 +108,11 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 if(mMap != null)
                     mMap.clear();
 
+                DecimalFormat formato1 = new DecimalFormat("#.000");
                 Log.i("CENTRO: ", String.valueOf(mMap.getCameraPosition().target.latitude) + " , " + String.valueOf(mMap.getCameraPosition().target.longitude));
                 Toast.makeText(getApplicationContext(), "Calculando Potencias", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "Potencia Total: "+ (formato1.format(potenciaTotalP(latLng))), Toast.LENGTH_LONG).show();
+
 
                 drawSquares(latLng.latitude, latLng.longitude);
                 pintarAntenas(getAntenas());
@@ -199,6 +204,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         double potenciaTotal=0;
         for(int i=0; i<antenasList.size(); i++ ){
 
+
             potenciaTotal= potenciaTotal+calcularPotencia(posiscion,antenasList.get(i).posicion());
            // Log.i(String.valueOf(i) + "  :  ", String.valueOf(potenciaTotal));
 
@@ -237,6 +243,15 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         misAntenas.add(currentAntena);
         currentAntena = new Antena( -74.045622, "LTE", 4.767238, 1000);
         misAntenas.add(currentAntena);
+        currentAntena = new Antena( -74.045722, "UMTS", 4.754625, 5512);
+        misAntenas.add(currentAntena);
+        currentAntena = new Antena( -74.039179, "UMTS", 4.766257, 1302);
+        misAntenas.add(currentAntena);
+        currentAntena = new Antena( -74.045622, "UMTS", 4.745195, 1190);
+        misAntenas.add(currentAntena);
+        currentAntena = new Antena( -74.027546, "UMTS", 4.75502, 1000);
+        misAntenas.add(currentAntena);
+
 
 
         return misAntenas;
@@ -247,7 +262,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         for(int i=0; i<antenas.size(); i++ ){
             double miLat=antenas.get(i).lat;
             double milong=antenas.get(i).lon;
-            mMap.addMarker(new MarkerOptions().position(new LatLng(miLat, milong)).icon(BitmapDescriptorFactory.fromResource(R.drawable.markerantena2)));
+            mMap.addMarker(new MarkerOptions().position(new LatLng(miLat, milong)).icon(BitmapDescriptorFactory.fromResource(R.drawable.antenamarcador2)));
 
         }
     }
