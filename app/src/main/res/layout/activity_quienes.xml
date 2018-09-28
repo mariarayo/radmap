@@ -32,17 +32,6 @@
                 />
 
 
-            <TextView
-                android:layout_width="340dp"
-                android:layout_height="40dp"
-                android:gravity="center"
-                android:text="Acerca de RadMap"
-                android:textStyle="bold"
-                android:textColor="#d48307"
-                android:textSize="28dp"
-                android:layout_centerHorizontal="true"
-
-                />
 
             <TextView
                 android:id="@+id/text1"
