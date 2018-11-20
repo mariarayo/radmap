@@ -35,9 +35,6 @@ public class Inicio extends Activity {
 
         setContentView(R.layout.activity_inicio);
 
-
-
-
         new Handler().postDelayed(new Runnable() {
             public void run() {
                 Intent intent = new Intent(Inicio.this, MapsActivity.class);
