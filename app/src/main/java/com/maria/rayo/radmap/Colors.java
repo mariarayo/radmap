@@ -83,6 +83,7 @@ public class Colors {
         }
 
       //  Log.i(Opcion + " ", String.valueOf(potenciaTotal));
+        //final
         return color;
     }
 }

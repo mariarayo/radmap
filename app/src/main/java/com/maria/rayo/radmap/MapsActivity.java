@@ -26,11 +26,13 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.maps.model.Polygon;
-import com.karumi.dexter.Dexter;
-import com.karumi.dexter.MultiplePermissionsReport;
-import com.karumi.dexter.PermissionToken;
-import com.karumi.dexter.listener.PermissionRequest;
-import com.karumi.dexter.listener.multi.MultiplePermissionsListener;
+
+
+//import com.karumi.dexter.Dexter;
+//import com.karumi.dexter.MultiplePermissionsReport;
+//import com.karumi.dexter.PermissionToken;
+//import com.karumi.dexter.listener.PermissionRequest;
+//import com.karumi.dexter.listener.multi.MultiplePermissionsListener;
 
 
 import java.math.RoundingMode;
@@ -54,7 +56,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maps);
-        requestPermissions();
+        //requestPermissions();
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         final SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
@@ -307,6 +309,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         }
     }
 
+    /*
     private void requestPermissions(){
         //Pedir permisos
         Dexter.withActivity(this)
@@ -439,4 +442,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             }
         }
     }
+    */
+
 }
