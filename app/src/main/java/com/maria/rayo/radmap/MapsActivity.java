@@ -108,8 +108,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
 
         mMap = googleMap;
-        mMap.getUiSettings().setZoomGesturesEnabled(false);
-        mMap.getUiSettings().setZoomControlsEnabled(false);
+//        mMap.getUiSettings().setZoomGesturesEnabled(false);
+//        mMap.getUiSettings().setZoomControlsEnabled(false);
 
       /*  if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)
                 != PackageManager.PERMISSION_GRANTED &&
@@ -133,7 +133,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 DecimalFormat formato1 = new DecimalFormat("#.000");
                 Log.i("CENTRO: ", String.valueOf(mMap.getCameraPosition().target.latitude) + " , " + String.valueOf(mMap.getCameraPosition().target.longitude));
                 Toast.makeText(getApplicationContext(), "Calculando Potencias", Toast.LENGTH_SHORT).show();
-                Toast.makeText(getApplicationContext(), "Potencia Total: "+ (formato1.format(potenciaTotalP(latLng))), Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(), "Potencia Total: "+ (formato1.format(potenciaTotalP(latLng))) + " W" , Toast.LENGTH_LONG).show();
 
 
                 drawSquares(latLng.latitude, latLng.longitude);
@@ -164,7 +164,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 DecimalFormat formato1 = new DecimalFormat("#.000");
                 Log.i("CENTRO: ", String.valueOf(mMap.getCameraPosition().target.latitude) + " , " + String.valueOf(mMap.getCameraPosition().target.longitude));
                 Toast.makeText(getApplicationContext(), "Calculando Potencias", Toast.LENGTH_SHORT).show();
-                Toast.makeText(getApplicationContext(), "Potencia Total: "+ (formato1.format(potenciaTotalP(latLng))), Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(), "Potencia Total: "+ (formato1.format(potenciaTotalP(latLng)))  + " W", Toast.LENGTH_LONG).show();
                 drawSquares(latLng.latitude, latLng.longitude);
                 pintarAntenas(getAntenas());
 

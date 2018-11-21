@@ -24,7 +24,7 @@ import com.karumi.dexter.listener.multi.MultiplePermissionsListener;
 import java.util.List;
 
 public class Inicio extends Activity {
-    private final int DURACION_SPLASH = 1000;
+    private final int DURACION_SPLASH = 3000;
 
 
     @Override
