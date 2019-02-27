@@ -28,17 +28,9 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.maps.model.Polygon;
 
 
-//import com.karumi.dexter.Dexter;
-//import com.karumi.dexter.MultiplePermissionsReport;
-//import com.karumi.dexter.PermissionToken;
-//import com.karumi.dexter.listener.PermissionRequest;
-//import com.karumi.dexter.listener.multi.MultiplePermissionsListener;
-
-
-import java.math.RoundingMode;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
-import java.util.List;
+
 
 
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback, GoogleMap.OnMarkerClickListener {
@@ -309,139 +301,5 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         }
     }
 
-    /*
-    private void requestPermissions(){
-        //Pedir permisos
-        Dexter.withActivity(this)
-                .withPermissions(
-                        Manifest.permission.READ_EXTERNAL_STORAGE,
-                        Manifest.permission.WRITE_EXTERNAL_STORAGE,
-                        Manifest.permission.ACCESS_FINE_LOCATION,
-                        Manifest.permission.ACCESS_COARSE_LOCATION,
-                        Manifest.permission.CAMERA,
-                        Manifest.permission.INTERNET,
-                        Manifest.permission.RECEIVE_BOOT_COMPLETED,
-                        Manifest.permission.GET_ACCOUNTS,
-                        Manifest.permission.ACCESS_NETWORK_STATE)
-                .withListener(new MultiplePermissionsListener() {
-                    @Override
-                    public void onPermissionsChecked(MultiplePermissionsReport report) {
-                        // check if all permissions are granted
-                        if (report.areAllPermissionsGranted()) {
-
-
-                        }
-                        // check for permanent denial of any permission
-                        if (report.isAnyPermissionPermanentlyDenied()) {
-
-                        }
-                    }
-
-                    @Override
-                    public void onPermissionRationaleShouldBeShown(List<PermissionRequest> permissions, PermissionToken token) {
-                        token.continuePermissionRequest();
-                    }
-                })
-                .onSameThread()
-                .check();
-
-
-        int locationFinePermissionCheck = ContextCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION);
-        int storagePermissionCheck = ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE);
-        int readstoragePermissionCheck = ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE);
-        int coarseLocationPermissionCheck = ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION);
-        int cameraPermissionCheck = ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA);
-
-        if (locationFinePermissionCheck != PackageManager.PERMISSION_GRANTED){
-            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, Permissions.getInstance().permissionAccesFine);
-        }
-        else if (storagePermissionCheck != PackageManager.PERMISSION_GRANTED){
-            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, Permissions.getInstance().permissionWriteExternalStorage);
-        }
-        else if (coarseLocationPermissionCheck != PackageManager.PERMISSION_GRANTED){
-            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_COARSE_LOCATION}, Permissions.getInstance().permissionCoarseLocation);
-        }
-        else if (cameraPermissionCheck != PackageManager.PERMISSION_GRANTED){
-            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.CAMERA}, Permissions.getInstance().permissionCamera);
-        }
-        else if (readstoragePermissionCheck != PackageManager.PERMISSION_GRANTED){
-            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, Permissions.getInstance().permissionReadExternalStorage);
-        }else{
-
-        }
-    }
-    @Override
-    public void onRequestPermissionsResult(int requestCode, String permissions[], int[] grantResults) {
-        int locationFinePermissionCheck = ContextCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION);
-        int storagePermissionCheck = ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE);
-        int coarseLocationPermissionCheck = ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION);
-        int cameraPermissionCheck = ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA);
-        int readstoragePermissionCheck = ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE);
-
-        switch (requestCode) {
-            case 66: {
-                if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                    if (storagePermissionCheck != PackageManager.PERMISSION_GRANTED || coarseLocationPermissionCheck != PackageManager.PERMISSION_GRANTED){
-                        requestPermissions();
-                    }else{
-
-                    }
-                } else {
-                    requestPermissions();
-                }
-                return;
-            }
-            case 67: {
-                if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                    if (locationFinePermissionCheck != PackageManager.PERMISSION_GRANTED || coarseLocationPermissionCheck != PackageManager.PERMISSION_GRANTED){
-                        requestPermissions();
-                    }else{
-
-                    }
-                } else {
-                    requestPermissions();
-                }
-                return;
-            }
-
-            case 65: {
-                if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                    if (storagePermissionCheck != PackageManager.PERMISSION_GRANTED || locationFinePermissionCheck != PackageManager.PERMISSION_GRANTED){
-                        requestPermissions();
-                    }else{
-
-                    }
-                } else {
-                    requestPermissions();
-                }
-                return;
-            }
-            case 68: {
-                if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                    if (cameraPermissionCheck != PackageManager.PERMISSION_GRANTED || cameraPermissionCheck != PackageManager.PERMISSION_GRANTED){
-                        requestPermissions();
-                    }else{
-
-                    }
-                } else {
-                    requestPermissions();
-                }
-                return;
-            }
-            case 69: {
-                if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                    if (readstoragePermissionCheck != PackageManager.PERMISSION_GRANTED || readstoragePermissionCheck != PackageManager.PERMISSION_GRANTED){
-                        requestPermissions();
-                    }else{
-
-                    }
-                } else {
-                    requestPermissions();
-                }
-                return;
-            }
-        }
-    }
-    */
-
+   
 }

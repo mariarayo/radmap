@@ -25,7 +25,7 @@ public class Colors {
         String Opcion = "";
 
         if ( potenciaTotal <2.50) {
-            color=(0x1809ff1c); //verde
+            color=(0x1809ff1c);
             Opcion = "1";
         }else{
             if ( potenciaTotal <=3.14) {
