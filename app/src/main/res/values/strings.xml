@@ -2,12 +2,12 @@
     <string name="app_name">RadMap</string>
     <string name="title_activity_maps">Map</string>
     <string name="texto1_QuienesSomos">RadMap es una aplicación móvil que calcula los niveles de radiación electromagnética que emiten las antenas, para lo cual la Universidad San Buenaventura ha diseñado un primer prototipo para un sector geográfico de Bogotá.</string>
-    <string name="texto2_QuienesSomos">Esta aplicación basada exclusivamente en modelos matemáticos de propagación, representará la contaminación en la forma de puntos de colores que representen niveles de exposición en unidades estándar Voltios por Metro (𝑉/𝑚).</string>
+    <string name="texto2_QuienesSomos">Esta aplicación basada exclusivamente en modelos matemáticos de propagación, representará la contaminación en la forma de puntos de colores que representen niveles de exposición en unidades estándar Voltios por Metro (V/m).</string>
     <string name="texto1_instrucciones">1. Click: recalcula las potencias alrededor del punto que se toca.</string>
     <string name="texto2_instrucciones">2. Drag: mueve el mapa sin recalcular la potencia electromagnética</string>
     <string name="texto3_instrucciones">3. Zoom: aleja o acerca el mapa sin recalcular la potencia electromagnética</string>
     <string name="texto4_instrucciones">Leyenda de densidades de potencia</string>
-    <string name="texto8_instrucciones">Por cada mivel de color, le corresponde un rango de potencia</string>
+    <string name="texto8_instrucciones">Por cada nivel de color, le corresponde un rango de potencia</string>
     <string name="texto6_instrucciones">Cálculo de Densidades de Potencia</string>
     <string name="texto7_instrucciones">Se usa la formula de Potencia para determinar cuanta energia puede irradear cada antena.<antena></antena></string>
     <string name="texto9_instrucciones">P= potencia total</string>

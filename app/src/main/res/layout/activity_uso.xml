@@ -188,6 +188,17 @@
                     android:layout_marginTop="10dp"
 
                     />
+                <TextView
+                    android:id="@+id/text15"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Descarga el documento"
+                    android:textColor="#d48307"
+                    android:textSize="22dp"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="20dp"
+
+                    />
 
                 <TextView
                     android:id="@+id/text14"

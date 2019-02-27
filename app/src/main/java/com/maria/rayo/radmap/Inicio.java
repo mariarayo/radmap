@@ -24,7 +24,7 @@ import com.karumi.dexter.listener.multi.MultiplePermissionsListener;
 import java.util.List;
 
 public class Inicio extends Activity {
-    private final int DURACION_SPLASH = 1000;
+    private final int DURACION_SPLASH = 3000;
 
 
     @Override
@@ -34,9 +34,6 @@ public class Inicio extends Activity {
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
         setContentView(R.layout.activity_inicio);
-
-
-
 
         new Handler().postDelayed(new Runnable() {
             public void run() {
